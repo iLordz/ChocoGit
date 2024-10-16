@@ -1,0 +1,27 @@
+.col1 {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+    cursor: pointer;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+    text-align: center; /* Centra el contenido horizontalmente */
+  }
+  
+  .dropdown-content img {
+    display: block; /* Para que los márgenes automáticos funcionen correctamente */
+    margin: 0 auto; /* Margen automático horizontal para centrar */
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+    cursor: pointer;
+  }
+  
+  

@@ -1,0 +1,149 @@
+<?php
+// Conexión a la base de datos
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "choco";
+
+// Crear conexión
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Verificar conexión
+if ($conn->connect_error) {
+    die("Conexión fallida: " . $conn->connect_error);
+}
+
+// Consulta para obtener modelos de chocolate
+$sqlModelos = "SELECT * FROM modelos_chocolate";
+$resultModelos = $conn->query($sqlModelos);
+
+// Consulta para obtener sabores de chocolate
+$sqlSabores = "SELECT * FROM sabores_chocolate";
+$resultSabores = $conn->query($sqlSabores);
+
+// Consulta para obtener tipos de chocolate
+$sqlTipos = "SELECT * FROM tipos_chocolate";
+$resultTipos = $conn->query($sqlTipos);
+
+// Consulta para obtener tamaños de chocolate
+$sqlTamanios = "SELECT * FROM tamanios_chocolate";
+$resultTamanios = $conn->query($sqlTamanios);
+
+// Consulta para obtener decoraciones de chocolate
+$sqlDecoraciones = "SELECT * FROM decoraciones_chocolate";
+$resultDecoraciones = $conn->query($sqlDecoraciones);
+
+// Consulta para obtener envolturas de chocolate
+$sqlEnvolturas = "SELECT * FROM envolturas_chocolate";
+$resultEnvolturas = $conn->query($sqlEnvolturas);
+
+// Consulta para obtener adicionales de chocolate
+$sqlAdicionales = "SELECT * FROM adicionales_chocolate";
+$resultAdicionales = $conn->query($sqlAdicionales);
+
+?>
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personaliza tu chocolate</title>
+    <!-- Agrega tus estilos CSS si los tienes -->
+</head>
+
+<body>
+    <h1>Personaliza tu chocolate</h1>
+    <form action="../guardar_pedido.php" method="post">
+        <label for="modelo">Selecciona un modelo:</label>
+        <select id="modelo" name="modelo">
+            <?php
+            if ($resultModelos->num_rows > 0) {
+                while ($row = $resultModelos->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+        <!-- Repite este bloque para cada opción de selección -->
+        <label for="sabor">Selecciona un sabor:</label>
+        <select id="sabor" name="sabor">
+            <?php
+            if ($resultSabores->num_rows > 0) {
+                while ($row = $resultSabores->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+
+        <label for="tipo_chocolate">Selecciona un tipo:</label>
+        <select id="tipo_chocolate" name="tipo_chocolate">
+            <?php
+            if ($resultTipos->num_rows > 0) {
+                while ($row = $resultTipos->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+
+        <label for="tamaño">Selecciona un tamaño:</label>
+        <select id="tamaño" name="tamaño">
+            <?php
+            if ($resultTamanios->num_rows > 0) {
+                while ($row = $resultTamanios->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+
+        <label for="decoracion">Selecciona una decoracion:</label>
+        <select id="decoracion" name="decoracion">
+            <?php
+            if ($resultDecoraciones->num_rows > 0) {
+                while ($row = $resultDecoraciones->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+
+        <label for="envoltura">Selecciona un envoltura:</label>
+        <select id="envoltura" name="envoltura">
+            <?php
+            if ($resultEnvolturas->num_rows > 0) {
+                while ($row = $resultEnvolturas->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+
+
+        <label for="adicionales">Selecciona adicionales:</label>
+        <select id="adicionales" name="adicionales">
+            <?php
+            if ($resultAdicionales->num_rows > 0) {
+                while ($row = $resultAdicionales->fetch_assoc()) {
+                    echo "<option value='" . $row["nombre"] . "'>" . $row["nombre"] . " $" . $row["precio"] . "</option>";
+                }
+            }
+            ?>
+        </select>
+
+
+        <!-- Termina el bloque de repetición -->
+        <br>
+        <input type="submit" value="Enviar pedido">
+    </form>
+</body>
+
+</html>
+
+<?php
+// Cerrar conexión a la base de datos
+$conn->close();
+?>

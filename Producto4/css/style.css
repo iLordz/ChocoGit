@@ -1,0 +1,222 @@
+.Logo{
+    height: 50px;
+}
+
+.navbar{
+    background:linear-gradient(100deg,#7c2714,#9e5b3d,#7c2714)!important;
+}
+
+.navbar-expand-lg .navbar-collapse{
+    justify-content: flex-end !important;
+}
+
+.dropdown-menu{
+    background-color: #9e5b3d !important;
+}
+
+.navbar-nav {
+    font-size: 20px !important;
+}
+.dropdown-menu a{
+    font-size: 20px !important;
+}
+.dropdown-menu textarea{
+    width: 100%;
+    height: 100%;
+}
+.dropdown-menu .enviar{
+    border-radius: 5px;
+    border: none;
+}
+.navbar-toggler{
+    border: none!important;
+}
+
+
+/*seccion1*/
+.contenedor-1{
+    background-color: black;
+    padding-top: 7px;
+    padding-bottom: 7px;
+    height: 100%;
+}
+.titulo{
+    background-color: #E9B824;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.botones {  
+    text-align: center;
+    padding-top: 7px;
+}
+.boton1{
+    border-radius: 7px;
+}
+
+/*seccion2*/
+.seccion2{
+    background-color: #b4764f;
+}
+.sabor{
+    background-color: #9a5833;
+    border-radius: 10px;
+    border: 50px;
+    height: 300px;
+    width: 180px;
+    border-radius: 15px ;
+    text-align: center;
+}
+.row1{
+    text-align: center;
+
+}
+.col1{
+    width: 350px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 20px;
+    text-align: center;
+    margin: auto;
+}
+
+.col p{
+    color: #ffffff;
+}
+.foot{
+    text-align: center;
+    
+}
+.foot:hover .footer1{
+    display: block;
+    text-decoration: none;
+} 
+
+.footer1{
+    text-decoration: none !important;
+    overflow: hidden;
+    /*display: none;*/
+    font-size: 25px; 
+    /*font-family: monospace; */ 
+    text-align: center;
+    color: #885a3a;
+    border-radius: 10px;
+}
+.boton {
+    height: 30px;
+    width: 100px;
+    margin: none;
+    border-radius: 10px; 
+
+}
+
+
+/*Footer*/
+.container1{
+    max-width: 1170px;
+    margin: auto;
+    background: fixed;
+    position: relative !important;
+
+}
+.footer{
+    background-image: url(../img/fondochocolate.jpg);
+    color: white;
+    padding: 70px 0;
+}
+.row{
+    display: flex;
+    flex-wrap: wrap;
+}
+.footer-col{
+    width: 25% !important;
+    padding: 0 15px;
+}
+.footer-col h4{
+    font-size: 20px;
+    color: white;
+    margin-bottom: 25px;
+    font-weight: 500;
+    position:relative;
+}
+
+.footer-col h4::before{
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    background-color: #000000;
+    height: 5px;
+    box-sizing: border-box;
+    width: 80px;
+}
+
+.footer-col ul{
+    list-style: none;
+}
+
+.footer-col li{
+    font-size: 18px;
+    color: #ffffff;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer-col li a:hover{
+    color: #000000;
+}
+.footer-col .social-link a{
+    display: inline-block;
+    height: 40px;
+    width: 40px;
+    margin: 0 10px 19 0px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+    color:white;
+    transition: all .5s ease;
+    margin-right: 4px;
+}
+.footer-col .social-link a:hover{
+    background: white;
+    color: black;
+}
+
+.footer{
+    color: white;
+    font-size: 13px;
+}
+
+.footer p{
+    margin-bottom: 0 !important;
+}
+.footer-col p{
+    color: white;
+}
+
+@media(max-width:767px){
+    .footer-col{
+        width: 50%;
+        margin-bottom: 30px;
+        text-align: justify;
+    }
+    .footer-col h4{
+        position:static;
+    }
+    .footer-col h4::before{
+        position: relative;
+    }
+    .footer1{
+        font-size: 10px;
+    }
+}
+
+@media(max-width:567px){
+    .footer-col{
+        width: 100%;
+    }
+}
+
+
+li .usuario{
+    align-items: center;
+}

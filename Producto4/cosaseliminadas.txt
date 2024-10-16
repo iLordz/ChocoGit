@@ -1,0 +1,137 @@
+salir.php
+
+<?php
+session_start();
+
+// Destruir todas las variables de sesión
+$_SESSION = array();
+
+// Si se desea eliminar la sesión, también se debe borrar el cookie de sesión.
+// Nota: ¡Esto destruirá la sesión y no solo los datos de sesión!
+if (ini_get("session.use_cookies")) {
+    $params = session_get_cookie_params();
+    setcookie(session_name(), '', time() - 42000,
+        $params["path"], $params["domain"],
+        $params["secure"], $params["httponly"]
+    );
+}
+
+// Finalmente, destruir la sesión
+session_destroy();
+
+// Redirigir a la página de inicio de sesión u otra página después de cerrar sesión
+header("Location: index.php");
+exit();
+?> 
+
+
+
+
+<?php
+session_start();
+include("php/Conexion.php");
+if(isset($_SESSION['Rol']) && ($_SESSION['Rol'] == 1 || $_SESSION['Rol'] == 2)) {
+  // El usuario tiene uno de los roles permitidos, permitir el acceso a la página
+  // Aquí va el contenido de la página
+
+  
+
+} else {
+  // El usuario no tiene el rol adecuado o no ha iniciado sesión, redirigir a otra página
+  echo "<script>alert('No puedes acceder no eres administrador o usuario'); window.location='principal.php';</script>";    
+  exit();
+}
+?>
+
+////// figuras.js
+
+var cartItems = []; // Array para almacenar los elementos del carrito
+
+function selectModel(modelName, price) {
+console.log("Model selected:", modelName, price);
+cartItems.push({ name: modelName, price: price }); // Agregar el modelo al carrito
+console.log("Cart items:", cartItems);
+updateRecibo(); // Actualizar el recibo en la página
+}
+
+function updateReciboSabor() {
+var saborSeleccionado = document.getElementById('sabor').value;
+var precioSabor = document.getElementById('sabor').selectedOptions[0].dataset.price;
+console.log("Sabor selected:", saborSeleccionado, precioSabor);
+cartItems.push({ name: "Sabor: " + saborSeleccionado, price: parseInt(precioSabor) }); // Agregar el sabor al carrito
+console.log("Cart items:", cartItems);
+updateRecibo(); // Actualizar el recibo en la página
+}
+
+function updateRecibo() {
+var recibo = document.getElementById('recibo');
+var cartItemsList = document.getElementById('cartItems');
+var total = 0;
+
+recibo.innerHTML = ''; // Limpiar el recibo principal antes de actualizarlo
+cartItemsList.innerHTML = ''; // Limpiar la lista del carrito antes de actualizarla
+
+cartItems.forEach(function(item) {
+recibo.innerHTML += `
+  <li class="list-group-item">${item.name} - $${item.price}</li>
+`;
+cartItemsList.innerHTML += `
+  <li class="list-group-item">${item.name} - $${item.price}</li>
+`;
+total += item.price;
+});
+
+var totalElement = document.getElementById('total');
+totalElement.innerText = `Total: $${total.toFixed(2)}`;
+
+var cartTotalElement = document.getElementById('cartTotal');
+cartTotalElement.innerText = `Total: $${total.toFixed(2)}`;
+}
+
+
+///
+function updateRecibo() {
+  var recibo = document.getElementById('recibo');
+  var cartItemsList = document.getElementById('cartItems');
+  var total = 0;
+  
+  recibo.innerHTML = ''; // Limpiar el recibo principal antes de actualizarlo
+  cartItemsList.innerHTML = ''; // Limpiar la lista del carrito antes de actualizarla
+  
+  cartItems.forEach(function(item) {
+  recibo.innerHTML += `
+    <li class="list-group-item">${item.name} - $${item.price}</li>
+  `;
+  cartItemsList.innerHTML += `
+    <li class="list-group-item">${item.name} - $${item.price}</li>
+  `;
+  total += item.price;
+  });
+  
+  var totalElement = document.getElementById('total');
+  totalElement.innerText = `Total: $${total.toFixed(2)}`;
+  
+  var cartTotalElement = document.getElementById('cartTotal');
+  cartTotalElement.innerText = `Total: $${total.toFixed(2)}`;
+  }
+
+
+
+
+function addToCart() {
+  // No necesitamos hacer nada aquí, ya que los elementos se agregan directamente al hacer clic en los botones "Seleccionar"
+  
+}
+
+function showCart() {
+  var modal = new bootstrap.Modal(document.getElementById('cartModal'));
+  modal.show();
+}
+
+function order() {
+  // No necesitamos hacer nada aquí ya que los elementos están en el carrito
+}
+
+
+
+/////
